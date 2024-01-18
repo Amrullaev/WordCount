@@ -1,6 +1,7 @@
 package com.example.slideview
 
 import android.annotation.SuppressLint
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -21,21 +22,27 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding.moveBtn.visibility = View.VISIBLE
                 val words = s?.trim()?.split("\\s+".toRegex())?.filter { it.isNotEmpty() }
                 val wordCount = words?.size ?: 0
                 val charCount = s?.length ?: 0
                 val spaceCount = s?.count { it.isWhitespace() } ?: 0
 
-                binding.resultTextView.text =
-                    "So'zlar: $wordCount\nHarflar: $charCount\nProbel: $spaceCount"
+                binding.resultTextViewWord.text = wordCount.toString()
+                binding.resultTextViewChar.text = charCount.toString()
+                binding.resultTextViewSpace.text = spaceCount.toString()
+
             }
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+
 
         binding.moveBtn.setOnTouchListener(object : View.OnTouchListener {
             var dx = 0f
