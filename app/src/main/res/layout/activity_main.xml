@@ -4,29 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="MainActivity">
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:hint="Matn kiriting"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="O‘tgan narsa o‘tib ketdi, quyosh kabi botdi. Ey o‘tmish, endi sen uchun ko‘zyoshi to‘kib qayg‘urayotganimni ko‘rmaysan, chunki sen bizni tark etding, bizlardan uzoqlashding va abadul-abad qaytib kelmaysan.
+
+Ey kelajak, sen g‘ayb olamidasan, bas, men havoyi orzular bilan hamkorlik qilmasman va hayotdagi bugunimni xayoldagi ertaga alishmayman, o‘z nafsimni tasavvurga sotmayman, kelajak uchun shoshilmayman, chunki ertangi kun hali yo‘qdir, hali yaratilmagan, hali tilga olgulik bir narsa emasdir.
+
+Kun buguningdir, bu so‘z hayotni go‘zal suratda ko‘rishni istagan inson uchun saodat lug‘atida eng go‘zal so‘zdir." />
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/move_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/slide_bg"
         android:elevation="15dp"
-        android:visibility="gone"
         android:gravity="center"
         android:orientation="vertical"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -68,7 +79,8 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/resultTextViewChar"                android:layout_width="wrap_content"
+                android:id="@+id/resultTextViewChar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:textSize="16sp"
@@ -100,10 +112,31 @@
                 tools:text="123" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_nightlight_round_24" />
+
+            <Switch
+                android:id="@+id/switch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_wb_sunny_24" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
