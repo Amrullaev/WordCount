@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.slideview"
-    compileSdk = 34
+    namespace = "uz.appvero.wordCount"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.slideview"
+        applicationId = "uz.appvero.wordCount"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
+        targetSdk = 35
+        versionCode = 2
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

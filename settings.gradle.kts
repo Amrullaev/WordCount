@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SlideView"
+rootProject.name = "WordCount"
 include(":app")
  

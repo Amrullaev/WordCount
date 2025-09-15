@@ -1,19 +1,14 @@
-package com.example.slideview
+package uz.appvero.wordCount
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.slideview.databinding.ActivityMainBinding
-import com.example.slideview.utils.ThemeHelper
+import uz.appvero.wordCount.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("Mode", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         val nightMode = sharedPreferences.getBoolean("night", false)
 
