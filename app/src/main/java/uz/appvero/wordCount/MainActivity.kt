@@ -1,6 +1,7 @@
 package uz.appvero.wordCount
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -21,22 +22,34 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("Mode", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        val nightMode = sharedPreferences.getBoolean("night", false)
+        
+        val actualNightModeActive: Boolean
 
-        if (nightMode) {
-            binding.switchBtn.isChecked = true
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        if (sharedPreferences.contains("night")) {
+            actualNightModeActive = sharedPreferences.getBoolean("night", false)
+        } else {
+            val currentSystemNightMode = (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+            actualNightModeActive = currentSystemNightMode
+            editor.putBoolean("night", actualNightModeActive)
+            editor.apply()
         }
-        binding.switchBtn.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (!isChecked) {
+
+        if (actualNightModeActive) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        binding.switchBtn.isChecked = !actualNightModeActive
+
+        binding.switchBtn.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 editor.putBoolean("night", false)
-                editor.apply()
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                editor.putBoolean("night", true)
-                editor.apply()
+                editor.putBoolean("night", true) // night mode is ON
             }
+            editor.apply()
         }
 
 
