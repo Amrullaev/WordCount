@@ -61,8 +61,7 @@ class MainActivity : AppCompatActivity() {
 
                 binding.moveBtn.visibility = View.VISIBLE
 
-                val words = s?.trim()?.split("\\s+".toRegex())?.filter { it.isNotEmpty() }
-                val wordCount = words?.size ?: 0
+                val wordCount = WordCounter.countWordsInText(s?.toString())
                 val charCount = s?.length ?: 0
                 val spaceCount = s?.count { it.isWhitespace() } ?: 0
 
