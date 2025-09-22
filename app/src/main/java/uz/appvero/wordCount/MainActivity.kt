@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.resultTextViewWord.text = "0"
+        binding.resultTextViewChar.text = "0"
+        binding.resultTextViewSpace.text = "0"
+
         val sharedPreferences = getSharedPreferences("Mode", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         
