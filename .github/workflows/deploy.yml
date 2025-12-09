@@ -38,14 +38,12 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Release AAB
-        shell: bash
         env:
           KEYSTORE_FILE: ${{ github.workspace }}/wordCount.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: |
-          bash gradlew app:bundleRelease --stacktrace
+        run: ./gradlew app:bundleRelease --stacktrace
 
       - name: Deploy to Play Store
         run: |
