@@ -26,24 +26,26 @@ jobs:
           ruby-version: '3.2'
 
       - name: Install FastLane
-        run: |
-          cd android
-          gem install fastlane
+        run: gem install fastlane
 
       - name: Decode Keystore
-        run: |
-          echo "${{ secrets.KEYSTORE_FILE }}" | base64 -d > wordCount.jks
+        run: echo "${{ secrets.KEYSTORE_FILE }}" | base64 -d > wordCount.jks
 
       - name: Create Play Store Key
-        run: |
-          echo '${{ secrets.PLAY_STORE_JSON_KEY }}' > android/fastlane/play-store-key.json
+        run: echo '${{ secrets.PLAY_STORE_JSON_KEY }}' > android/fastlane/play-store-key.json
 
-      - name: Deploy to Play Store
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Build Release AAB
         env:
           KEYSTORE_FILE: ${{ github.workspace }}/wordCount.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew app:bundleRelease
+
+      - name: Deploy to Play Store
         run: |
           cd android
           fastlane internal
