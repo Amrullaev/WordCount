@@ -4,14 +4,13 @@ platform :android do
   
   desc "Deploy to Internal Testing"
   lane :internal do
-    gradle(
-      task: "bundle",
-      build_type: "Release"
-    )
+    # AAB file path
+    aab_path = "../composeApp/build/outputs/bundle/release/composeApp-release.aab"
     
+    # Upload to Play Store
     upload_to_play_store(
       track: 'internal',
-      aab: "../app/build/outputs/bundle/release/app-release.aab",
+      aab: aab_path,
       json_key: "./fastlane/play-store-key.json",
       skip_upload_metadata: true,
       skip_upload_images: true,
