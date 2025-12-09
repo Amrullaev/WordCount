@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file(System.getenv("KEYSTORE_FILE") ?: "../wordCount.jks")
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
+        }
+    }
     namespace = "uz.appvero.wordCount"
     compileSdk = 35
 
@@ -20,7 +28,8 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
+signingConfig = signingConfigs.getByName("release")            
+proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
