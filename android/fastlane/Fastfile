@@ -5,7 +5,7 @@ platform :android do
   desc "Deploy to Internal Testing"
   lane :internal do
     # AAB file path
-    aab_path = "../composeApp/build/outputs/bundle/release/composeApp-release.aab"
+    aab_path = "../app/build/outputs/bundle/release/app-release.aab"
     
     # Upload to Play Store
     upload_to_play_store(
