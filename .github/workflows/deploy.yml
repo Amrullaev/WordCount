@@ -18,7 +18,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'gradle'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -34,16 +36,13 @@ jobs:
       - name: Create Play Store Key
         run: echo '${{ secrets.PLAY_STORE_JSON_KEY }}' > android/fastlane/play-store-key.json
 
-      - name: Make gradlew executable
-        run: chmod +x gradlew
-
       - name: Build Release AAB
         env:
           KEYSTORE_FILE: ${{ github.workspace }}/wordCount.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew app:bundleRelease --stacktrace
+        run: gradle app:bundleRelease --stacktrace
 
       - name: Deploy to Play Store
         run: |
