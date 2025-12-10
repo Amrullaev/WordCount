@@ -3,10 +3,35 @@ name: Deploy to Play Store
 on:
   push:
     branches: [main, master]
-  workflow_dispatch:
+    paths:
+      - 'app/build.gradle.kts'  # Faqat bu fayl o'zgarganda
+  workflow_dispatch:  # Manual ishga tushirish ham mumkin
 
 jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.check.outputs.changed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      
+      - name: Check if versionCode changed
+        id: check
+        run: |
+          if git diff HEAD~1 HEAD -- app/build.gradle.kts | grep -q "versionCode"; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Version code changed - will deploy"
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "⏭️ Version code unchanged - skipping deploy"
+          fi
+
   deploy:
+    needs: check-version
+    if: needs.check-version.outputs.should_deploy == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     
     steps:
