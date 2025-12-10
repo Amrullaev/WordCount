@@ -50,7 +50,7 @@ Kun buguningdir, bu so‘z hayotni go‘zal suratda ko‘rishni istagan inson uc
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editText"
-                android:text="So'zlar:"
+                android:text="So'zlar: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -74,7 +74,7 @@ Kun buguningdir, bu so‘z hayotni go‘zal suratda ko‘rishni istagan inson uc
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editText"
-                android:text="Harflar:"
+                android:text="Harflar: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -99,7 +99,7 @@ Kun buguningdir, bu so‘z hayotni go‘zal suratda ko‘rishni istagan inson uc
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editText"
-                android:text="Probel:"
+                android:text="Probel: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
