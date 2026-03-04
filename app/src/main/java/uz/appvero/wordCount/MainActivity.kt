@@ -1,6 +1,7 @@
 package uz.appvero.wordCount
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -57,6 +58,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+        binding.btnAds.setOnClickListener {
+            startActivity(Intent(this, AdActivity::class.java))
+        }
 
         binding.editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

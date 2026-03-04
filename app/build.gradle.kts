@@ -19,8 +19,8 @@ android {
         applicationId = "uz.appvero.wordCount"
         minSdk = 24
         targetSdk = 35
-        versionCode = 7
-        versionName = "1.0.4"
+        versionCode = 8
+        versionName = "1.0.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -56,4 +56,8 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+    implementation("com.google.ads.mediation:facebook:6.21.0.1")
+    implementation("com.google.ads.mediation:unity:4.12.4.0")
 }

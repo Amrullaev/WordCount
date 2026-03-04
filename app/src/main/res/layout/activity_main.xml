@@ -25,6 +25,16 @@ Ey kelajak, sen g‘ayb olamidasan, bas, men havoyi orzular bilan hamkorlik qilm
 Kun buguningdir, bu so‘z hayotni go‘zal suratda ko‘rishni istagan inson uchun saodat lug‘atida eng go‘zal so‘zdir." />
 
 
+    <Button
+        android:id="@+id/btnAds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Reklamalar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/move_btn"
         android:layout_width="wrap_content"
